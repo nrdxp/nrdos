@@ -3,5 +3,6 @@
     discord
     element-desktop
     signal-desktop
+    slack
   ];
 }
