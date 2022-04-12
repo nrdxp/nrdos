@@ -9,8 +9,6 @@ in
   hardware.pulseaudio.enable = true;
 
   boot = {
-    tmpOnTmpfs = true;
-
     kernel.sysctl."kernel.sysrq" = 1;
 
   };

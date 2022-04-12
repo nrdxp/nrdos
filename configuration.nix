@@ -12,6 +12,8 @@
       ./.
     ];
 
+  boot.cleanTmpDir = true;
+
   # disable mitigations
   boot.kernelParams = [
     "ibrs"
