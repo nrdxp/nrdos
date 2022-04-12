@@ -131,7 +131,7 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "qt";
+    pinentryFlavor = "gnome3";
   };
 
   # List services that you want to enable:
