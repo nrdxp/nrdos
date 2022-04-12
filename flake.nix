@@ -20,7 +20,8 @@
               imports = [ ./home/alacritty ./home/git ./home/direnv ];
             };
           }
-          nixos-hardware.nixosModules.dell-latitude-7490
+          nixos-hardware.nixosModules.common-cpu-intel
+          nixos-hardware.nixosModules.common-pc-laptop-ssd
         ];
       };
     };
