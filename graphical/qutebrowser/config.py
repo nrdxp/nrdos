@@ -242,8 +242,6 @@ c.hints.chars = "asdfghjklvbcntyruewom"
 
 c.colors.webpage.darkmode.enabled = True
 
-c.colors.webpage.prefers_color_scheme_dark = True
-
 # Font color for hints.
 # Type: QssColor
 c.colors.hints.fg = '#EFF0EB'
