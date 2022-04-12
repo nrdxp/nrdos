@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -11,6 +11,22 @@
       ./hardware-configuration.nix
       ./.
     ];
+
+  # disable mitigations
+  boot.kernelParams = [
+    "ibrs"
+    "noibpb"
+    "nopti"
+    "nospectre_v2"
+    "nospectre_v1"
+    "l1tf=off"
+    "nospec_store_bypass_disable"
+    "no_stf_barrier"
+    "mds=off"
+    "tsx=on"
+    "tsx_async_abort=off"
+    "mitigations=off"
+  ];
 
   # Use the GRUB bootloader.
   boot.loader.efi.efiSysMountPoint = "/boot/efi";

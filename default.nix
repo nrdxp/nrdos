@@ -1,10 +1,9 @@
 { pkgs, ... }: {
-  imports = [ ./zsh ./tmux ./core.nix ./kakoune ./graphical ./laptop ];
+  imports = [ ./term/zsh ./term/tmux ./core.nix ./term/kakoune ./graphical ./laptop ];
 
   environment.shellAliases = {
     v = "$EDITOR";
-    vi = "k";
-    vim = "k";
+    pass = "gopass";
   };
 
   environment.sessionVariables = {
@@ -15,7 +14,18 @@
     VISUAL = "k";
   };
 
-  environment.systemPackages = with pkgs; [ file less ncdu tig wget neovim ];
+  environment.systemPackages = with pkgs; [
+    clang
+    file
+    git-crypt
+    gnupg
+    less
+    ncdu
+    gopass
+    tig
+    tokei
+    wget
+  ];
 
   fonts =
     let nerdfonts = pkgs.nerdfonts.override { fonts = [ "DejaVuSansMono" ]; };
@@ -25,4 +35,10 @@
       fontconfig.defaultFonts.monospace =
         [ "DejaVu Sans Mono Nerd Font Complete Mono" ];
     };
+
+  documentation.dev.enable = true;
+
+  programs.thefuck.enable = true;
+  programs.firejail.enable = true;
+  programs.mtr.enable = true;
 }
