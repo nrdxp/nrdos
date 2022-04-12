@@ -6,6 +6,7 @@
       [main]
       systemd-resolved=false
     '';
+    wifi.backend = "iwd";
   };
 
   networking.nameservers =
