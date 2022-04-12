@@ -5,13 +5,15 @@
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-  outputs = { self, nixos, home-manager, nixos-hardware }:
+  outputs = inputs@{ self, nixos, home-manager, nixos-hardware }:
     let inherit (nixos) lib; in
     {
       nixosConfigurations.latitude = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+
+          # home-manager
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -41,8 +43,15 @@
               };
             };
           }
+
+          # nixos-hardware
           nixos-hardware.nixosModules.common-cpu-intel
           nixos-hardware.nixosModules.common-pc-laptop-ssd
+
+          # flake registry
+          {
+            nix.registry = builtins.mapAttrs (_: flake: { inherit flake; }) inputs;
+          }
         ];
       };
     };
