@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./.
     ];
 
   # Use the GRUB bootloader.
@@ -54,7 +55,9 @@
   # };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
 
 
 
@@ -91,10 +94,18 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    kakoune
-    gopass
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   kakoune
+  #   gopass
+  #   chromium
+  #   gnomeExtensions.appindicator
+  #   gnomeExtensions.pop-shell
+  #   gnomeExtensions.dash-to-dock
+  #   slack
+  #   wl-clipboard
+  # ];
+
+  # services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
