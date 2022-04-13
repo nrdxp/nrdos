@@ -6,6 +6,7 @@
     ../../profiles/term/kakoune
     ../../profiles/graphical
     ../../profiles/laptop
+    ../../profiles/virt
     ./configuration.nix
   ];
 
