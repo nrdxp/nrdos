@@ -1,0 +1,10 @@
+[extraConfig]
+  user.name = "Timothy DeHerrera"
+  user.signingKey = "19B7285E0F84A536"
+  user.email = "tim@nrdxp.dev"
+
+  commit.gpgSign = true
+
+[[includes]]
+  condition = "gitdir:~/work/**"
+  contents.user.email = "tim.deherrera@iohk.io"
