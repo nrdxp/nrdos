@@ -1,5 +1,13 @@
 { pkgs, ... }: {
-  imports = [ ./term/zsh ./term/tmux ./core.nix ./term/kakoune ./graphical ./laptop ];
+  imports = [
+    ../../profiles/term/zsh
+    ../../profiles/term/tmux
+    ../../profiles/core.nix
+    ../../profiles/term/kakoune
+    ../../profiles/graphical
+    ../../profiles/laptop
+    ./configuration.nix
+  ];
 
   environment.shellAliases = {
     v = "$EDITOR";

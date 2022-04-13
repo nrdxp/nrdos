@@ -1,7 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let inherit (lib) fileContents;
 in
 {
+
+  # flake registry
+  nix.registry = builtins.mapAttrs (_: flake: { inherit flake; }) inputs;
+
   # programs.git.enable = true;
   # programs.git.config.init.defaultBranch = "master";
 
@@ -107,6 +111,12 @@ in
     allowedUsers = [ "@wheel" ];
 
     trustedUsers = [ "root" "@wheel" ];
+
+    nixPath = [
+      "nixpkgs=${inputs.nixos}"
+      "home-manager=${inputs.home-manager}"
+      "nixos-config=/etc/nixos/configuration.nix"
+    ];
   };
 
   services.earlyoom.enable = true;
