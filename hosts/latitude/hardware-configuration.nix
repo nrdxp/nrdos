@@ -15,6 +15,7 @@
       preLVM = true;
       keyFile = "keyfile.bin";
       allowDiscards = true;
+      fallbackToPassword = true;
     };
     secrets."keyfile.bin" = "/etc/secrets/initrd/keyfile.bin";
   };
