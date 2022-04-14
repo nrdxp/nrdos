@@ -15,7 +15,7 @@
 
         modules = [
           ./hosts/latitude
-          ./home/nrd.nix
+          ./profiles/users/nrd.nix
 
           # home-manager
           home-manager.nixosModules.home-manager

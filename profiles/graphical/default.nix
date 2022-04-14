@@ -1,8 +1,12 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let inherit (builtins) readFile;
 in
 {
   imports = [ ./xmonad ../network ./im ./qutebrowser ];
+
+  home-manager.sharedModules = lib.mkIf (config ? home-manager) [{
+    imports = [ ./hm-alacritty ];
+  }];
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
@@ -46,6 +50,7 @@ in
     };
 
     systemPackages = with pkgs; [
+      alacritty
       adapta-gtk-theme
       dzen2
       feh

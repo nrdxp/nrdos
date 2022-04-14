@@ -30,8 +30,6 @@
   };
 
   home-manager.sharedModules = lib.mkIf (config ? home-manager) [{
-    imports = [ ../../../home/alacritty ];
-
     services.dunst.enable = true;
     services.dunst.configFile = ./dunstrc;
     services.dunst.waylandDisplay = "wayland-0";
