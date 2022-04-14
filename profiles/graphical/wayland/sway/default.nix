@@ -5,7 +5,7 @@ let
   inherit (config.hardware) pulseaudio;
 in
 {
-  imports = [ ../qutebrowser ];
+  imports = [ ../. ];
 
   sound.enable = true;
 
@@ -26,19 +26,13 @@ in
       options.programs.sway.extraPackages.default ++ [
         dmenu
         networkmanager_dmenu
-        qt5.qtwayland
-        alacritty
         volnoti
-        wl-clipboard
-        (waybar.override { pulseSupport = pulseaudio.enable; })
-        grim
-        slurp
       ];
   };
 
   environment.etc = {
     "sway/config".text =
-      let volnoti = import ../misc/volnoti.nix { inherit pkgs; };
+      let volnoti = import ../../misc/volnoti.nix { inherit pkgs; };
       in
       ''
         set $volume ${volnoti}
@@ -49,13 +43,7 @@ in
 
         ${readFile ./config}
       '';
-
-    "xdg/waybar".source = ./waybar;
   };
-
-  programs.tmux.extraConfig = lib.mkBefore ''
-    set -g @override_copy_command 'wl-copy'
-  '';
 
   services.redshift = lib.mkIf
     ((builtins.tryEval config.location.latitude).success

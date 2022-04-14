@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: Roboto,'Font Awesome 5', 'SFNS Display',  Helvetica, Arial, sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     min-height: 0;
 }
 
@@ -60,7 +60,7 @@ window#waybar.hidden {
 }
 
 #clock {
-    
+
 }
 
 #battery {
@@ -98,6 +98,7 @@ window#waybar.hidden {
     margin: 0 0 0 10px;
     padding:  0 10px 0 20px;
     border-radius: 20px 0 0 20px;
+    font-size: 25px;
 }
 
 #network.disconnected {

@@ -6,6 +6,7 @@
     ../../profiles/term/kakoune
     ../../profiles/graphical
     ../../profiles/laptop
+    ../../profiles/graphical/wayland/vivarium
     ../../profiles/virt
     ../../profiles/network/torrent
     ./configuration.nix

@@ -58,7 +58,7 @@
     },
     "clock": {
         "interval": 1,
-        "format": "<span color=\"#ff5555\"></span>  {:%I : %M : %p}",
+        "format": "<span color=\"#ff5555\"></span>  {:%I : %M %p}",
         "format-alt": "<span color=\"#bd93f9\"></span>   {:%d / %m / %Y}"
     },
     "clock#time": {
