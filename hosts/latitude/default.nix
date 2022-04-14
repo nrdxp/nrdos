@@ -7,6 +7,7 @@
     ../../profiles/graphical
     ../../profiles/laptop
     ../../profiles/virt
+    ../../profiles/network/torrent
     ./configuration.nix
   ];
 
