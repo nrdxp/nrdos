@@ -4,8 +4,9 @@
   inputs.nixos.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
+  inputs.vivarium.url = "github:nrdxp/vivarium";
 
-  outputs = inputs@{ self, nixos, home-manager, nixos-hardware }:
+  outputs = inputs@{ self, nixos, home-manager, nixos-hardware, ... }:
     let inherit (nixos) lib; in
     {
       nixosConfigurations.latitude = lib.nixosSystem {

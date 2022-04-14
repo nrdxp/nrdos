@@ -67,7 +67,23 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixos": "nixos",
-        "nixos-hardware": "nixos-hardware"
+        "nixos-hardware": "nixos-hardware",
+        "vivarium": "vivarium"
+      }
+    },
+    "vivarium": {
+      "locked": {
+        "lastModified": 1649901272,
+        "narHash": "sha256-Y0jcREFtVN71HZgdZmUbVvAuxbr6J6e7obsAn8IHvIo=",
+        "owner": "nrdxp",
+        "repo": "vivarium",
+        "rev": "71b78cc3e0c110155f79fd7becfb619c20644fd6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nrdxp",
+        "repo": "vivarium",
+        "type": "github"
       }
     }
   },

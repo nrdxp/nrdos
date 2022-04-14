@@ -2,7 +2,7 @@
 let inherit (builtins) readFile;
 in
 {
-  imports = [ ./sway ./xmonad ../network ./im ];
+  imports = [ ./sway ./xmonad ../network ./im ./vivarium ];
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
