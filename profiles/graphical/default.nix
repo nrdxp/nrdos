@@ -64,8 +64,16 @@ in
       stdmanpages
       xsel
       zathura
+      (
+        # set default cursor theme when installed
+        writeTextDir "share/icons/default/index.theme" ''
+          [icon theme]
+          Inherits=Adwaita
+        ''
+      )
     ];
   };
+
 
   services.xbanish.enable = true;
 
