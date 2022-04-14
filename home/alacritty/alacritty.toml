@@ -1,0 +1,33 @@
+programs.alacritty.enable = true
+
+[programs.alacritty.settings]
+env.TERM = "xterm-256color"
+window.decorations = "full"
+font.size = 9.0
+cursor.style = "Beam"
+
+# snazzy theme
+
+# Default colors
+colors.primary.background = "0x282a36"
+colors.primary.foreground = "0xeff0eb"
+
+# Normal colors
+colors.normal.black = "0x282a36"
+colors.normal.red = "0xff5c57"
+colors.normal.green = "0x5af78e"
+colors.normal.yellow = "0xf3f99d"
+colors.normal.blue = "0x57c7ff"
+colors.normal.magenta = "0xff6ac1"
+colors.normal.cyan = "0x9aedfe"
+colors.normal.white = "0xf1f1f0"
+
+# Bright colors
+colors.bright.black = "0x686868"
+colors.bright.red = "0xff5c57"
+colors.bright.green = "0x5af78e"
+colors.bright.yellow = "0xf3f99d"
+colors.bright.blue = "0x57c7ff"
+colors.bright.magenta = "0xff6ac1"
+colors.bright.cyan = "0x9aedfe"
+colors.bright.white = "0xf1f1f0"

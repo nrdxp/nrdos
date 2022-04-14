@@ -120,7 +120,4 @@ in
   };
 
   services.earlyoom.enable = true;
-
-  lib.toml.import = file: builtins.fromTOML (builtins.readFile file);
-
 }
