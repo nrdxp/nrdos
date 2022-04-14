@@ -4,6 +4,8 @@ let
   inherit (lib) mkAfter;
 in
 {
+  imports = [ ./qbittorrent.nix ];
+
   services.qbittorrent = {
     enable = true;
     group = "media";
