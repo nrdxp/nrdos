@@ -4,8 +4,8 @@
     ../../profiles/term/tmux
     ../../profiles/core.nix
     ../../profiles/term/kakoune
-    ../../profiles/graphical
     ../../profiles/laptop
+    ../../profiles/graphical/x11/xmonad
     ../../profiles/graphical/wayland/vivarium
     ../../profiles/virt
     ../../profiles/network/torrent

@@ -7,8 +7,6 @@ in
 {
   imports = [ ../. ];
 
-  sound.enable = true;
-
   programs.sway = {
     enable = true;
 
@@ -32,7 +30,7 @@ in
 
   environment.etc = {
     "sway/config".text =
-      let volnoti = import ../../misc/volnoti.nix { inherit pkgs; };
+      let volnoti = import ../../volnoti.nix { inherit pkgs; };
       in
       ''
         set $volume ${volnoti}

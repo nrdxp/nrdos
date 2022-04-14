@@ -9,7 +9,7 @@ let
 
   stoggle = writeScript "xmonad-stoggle" (readFile ./scripts/stoggle);
 
-  volnoti = import ../misc/volnoti.nix { inherit pkgs; };
+  volnoti = import ../../volnoti.nix { inherit pkgs; };
 in
 ''
   ${readFile ./_xmonad.hs}
