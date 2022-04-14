@@ -11,6 +11,8 @@
 
   nixpkgs.overlays = [ inputs.vivarium.overlay ];
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   services.xserver.displayManager.sessionPackages = [ pkgs.vivarium ];
 
   xdg.portal = {
