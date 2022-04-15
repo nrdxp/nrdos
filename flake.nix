@@ -3,6 +3,7 @@
 
   inputs.nixos.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.home-manager.inputs.nixpkgs.follows = "nixos";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
   inputs.vivarium.url = "github:nrdxp/vivarium";
 
