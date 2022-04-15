@@ -1,3 +1,3 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [ ./networkmanager ./adblocking ];
 }

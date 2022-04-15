@@ -9,4 +9,6 @@
   nixpkgs.overlays = [ inputs.vivarium.overlay ];
 
   services.xserver.displayManager.sessionPackages = [ pkgs.vivarium ];
+
+  services.blueman.enable = true;
 }
