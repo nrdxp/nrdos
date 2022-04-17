@@ -10,7 +10,6 @@ c.content.tls.certificate_errors = 'ask-block-thirdparty'
 c.content.webrtc_ip_handling_policy = 'default-public-interface-only'
 c.downloads.location.suggestion = 'both'
 c.hints.find_implementation = 'javascript'
-c.hints.leave_on_load = True
 c.input.insert_mode.auto_load = True
 c.input.mode_override = 'normal'
 c.qt.args = [ 'enable-gpu-rasterization' ]
