@@ -7,7 +7,7 @@
     qt5.qtwayland
     slurp
     swaybg
-    (waybar.override { pulseSupport = config.hardware.pulseaudio.enable; })
+    (waybar.override { pulseSupport = config.hardware.pulseaudio.enable || config.services.pipewire.pulse.enable; })
     wl-clipboard
     (wofi.overrideAttrs (_: {
       preFixup = ''

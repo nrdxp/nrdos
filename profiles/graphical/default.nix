@@ -17,6 +17,9 @@ in
 
   services.pipewire.enable = true;
   services.pipewire.pulse.enable = true;
+  security.rtkit.enable = true;
+
+  systemd.user.services.pipewire-pulse.path = [ pkgs.pulseaudio ];
 
   services.xserver.libinput.enable = true;
 
@@ -55,6 +58,7 @@ in
 
   # Packages
   environment.systemPackages = with pkgs; [
+    pulseaudio
     alacritty
     adapta-gtk-theme
     dzen2
