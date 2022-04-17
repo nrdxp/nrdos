@@ -106,8 +106,9 @@
     },
     "pulseaudio": {
         //"scroll-step": 1,
-        "format": "<span color=\"#8be9fd\">{icon}</span>  {volume}%",
-        "format-muted": "",
+        "format": "<span color=\"#8be9fd\">{icon}</span>  {volume}% {format_source}",
+        "format-muted": "<span color=\"#8be9fd\">🔇</span> {format_source}",
+        "format-source-muted": "| mic: muted",
         "format-icons": {
             "headphones": "",
             "handsfree": "",

@@ -58,6 +58,7 @@ in
 
   # Packages
   environment.systemPackages = with pkgs; [
+    pavucontrol
     pulseaudio
     alacritty
     adapta-gtk-theme
