@@ -11,6 +11,8 @@ in
   services.xserver.displayManager.gdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
+  programs.dconf.enable = true;
+
   # Hardware
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
