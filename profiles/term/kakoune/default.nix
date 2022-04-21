@@ -14,6 +14,12 @@
     dhall
     dhall-lsp-server
     haskellPackages.haskell-language-server
+    treefmt
+    nodejs # for node path setup hook for prettier plugin
+    nodePackages.prettier
+    nodePackages.prettier-plugin-toml
+    shfmt
+    black
   ];
 
   environment.etc = {

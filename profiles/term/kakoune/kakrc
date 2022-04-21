@@ -16,6 +16,21 @@ hook global BufWritePre ^[^*]+$ %{
 # use .editorconfig
 hook global WinCreate .* %{editorconfig-load}
 
+# set global formatter
+hook global BufSetOption .* %{
+    set-option buffer formatcmd "treefmt --stdin %val{buffile}"
+}
+hook global WinSetOption .* %{
+  set window formatcmd "treefmt --stdin %val{buffile}"
+}
+hook global BufWritePre .* %{
+    evaluate-commands %sh{
+        if [ -n "$kak_opt_formatcmd" ]; then
+            echo format
+        fi
+    }
+}
+
 # useful mappings
 map global normal <a-q> ': delete-buffer<ret>'
 map global normal <c-s> ': write<ret>'

@@ -7,6 +7,10 @@ hook -group lsp global WinSetOption filetype=(elm|rust|c|cpp|python|dhall|haskel
   set buffer lsp_auto_highlight_references true
 
   hook buffer BufWritePre .* %{
-    lsp-formatting
+    evaluate-commands %sh{
+        if [ -z "$kak_opt_formatcmd" ]; then
+            echo lsp-formatting
+        fi
+    }
   }
 }
