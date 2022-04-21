@@ -1,17 +1,17 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   inherit (pkgs) ghc;
-in
-{
+in {
   environment.systemPackages = [
-    (ghc.withHoogle
-      (self: with self; [
-        cabal2nix
-        cabal-install
-        implicit-hie
-        hie-bios
-        stack
-      ])
+    (
+      ghc.withHoogle
+      (self:
+        with self; [
+          cabal2nix
+          cabal-install
+          implicit-hie
+          hie-bios
+          stack
+        ])
     )
   ];
 }

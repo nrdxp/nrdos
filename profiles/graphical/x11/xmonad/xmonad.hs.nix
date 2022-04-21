@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   inherit (builtins) readFile;
   inherit (pkgs) writeScript;
 
@@ -9,11 +8,10 @@ let
 
   stoggle = writeScript "xmonad-stoggle" (readFile ./scripts/stoggle);
 
-  volnoti = import ../../volnoti.nix { inherit pkgs; };
-in
-''
+  volnoti = import ../../volnoti.nix {inherit pkgs;};
+in ''
   ${readFile ./_xmonad.hs}
   ${import ./_xmonad.nix {
     inherit screenshots autostart stoggle pkgs volnoti;
-    }}
+  }}
 ''

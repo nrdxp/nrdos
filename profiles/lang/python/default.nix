@@ -1,29 +1,25 @@
-{ pkgs, ... }:
-let inherit (pkgs) python3Packages;
-in
-{
-  environment.systemPackages =
-    let
-      packages = pythonPackages:
-        with pythonPackages; [
-          numpy
-          pandas
-          ptpython
-          requests
-          scipy
-        ];
+{pkgs, ...}: let
+  inherit (pkgs) python3Packages;
+in {
+  environment.systemPackages = let
+    packages = pythonPackages:
+      with pythonPackages; [
+        numpy
+        pandas
+        ptpython
+        requests
+        scipy
+      ];
 
-      python = pkgs.python3.withPackages packages;
-
-    in
-    [ python ];
+    python = pkgs.python3.withPackages packages;
+  in [python];
   environment.sessionVariables = {
-    PYTHONSTARTUP =
-      let
-        startup = pkgs.writers.writePython3 "ptpython.py"
-          {
-            libraries = with python3Packages; [ ptpython ];
-          } ''
+    PYTHONSTARTUP = let
+      startup =
+        pkgs.writers.writePython3 "ptpython.py"
+        {
+          libraries = with python3Packages; [ptpython];
+        } ''
           from __future__ import unicode_literals
 
           from pygments.token import Token
@@ -41,7 +37,6 @@ in
           else:
               sys.exit(embed(globals(), locals(), configure=configure))
         '';
-      in
-      "${startup}";
+    in "${startup}";
   };
 }

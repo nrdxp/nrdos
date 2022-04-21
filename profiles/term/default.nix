@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  imports = [ ./zsh ./tmux ./kakoune ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [./zsh ./tmux ./kakoune];
 
   home-manager.sharedModules = lib.mkIf (config ? home-manager) [
     ./hm-git
@@ -52,73 +56,71 @@
     whois
   ];
 
-  environment.shellAliases =
-    let ifSudo = lib.mkIf config.security.sudo.enable;
-    in
-    {
-      v = "$EDITOR";
-      pass = "gopass";
+  environment.shellAliases = let
+    ifSudo = lib.mkIf config.security.sudo.enable;
+  in {
+    v = "$EDITOR";
+    pass = "gopass";
 
-      # quick cd
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      "...." = "cd ../../..";
-      "....." = "cd ../../../..";
+    # quick cd
+    ".." = "cd ..";
+    "..." = "cd ../..";
+    "...." = "cd ../../..";
+    "....." = "cd ../../../..";
 
-      # git
-      g = "git";
+    # git
+    g = "git";
 
-      # grep
-      grep = "rg";
-      gi = "grep -i";
+    # grep
+    grep = "rg";
+    gi = "grep -i";
 
-      # nix
-      n = "nix";
-      np = "n profile";
-      ni = "np install";
-      nr = "np remove";
-      ns = "n search --no-update-lock-file";
-      nf = "n flake";
-      nepl = "n repl '<nixpkgs>'";
-      srch = "ns nixos";
-      orch = "ns override";
-      nrb = ifSudo "sudo nixos-rebuild";
+    # nix
+    n = "nix";
+    np = "n profile";
+    ni = "np install";
+    nr = "np remove";
+    ns = "n search --no-update-lock-file";
+    nf = "n flake";
+    nepl = "n repl '<nixpkgs>'";
+    srch = "ns nixos";
+    orch = "ns override";
+    nrb = ifSudo "sudo nixos-rebuild";
 
-      # sudo
-      s = ifSudo "sudo -E ";
-      si = ifSudo "sudo -i";
-      se = ifSudo "sudoedit";
+    # sudo
+    s = ifSudo "sudo -E ";
+    si = ifSudo "sudo -i";
+    se = ifSudo "sudoedit";
 
-      # top
-      top = "btm";
+    # top
+    top = "btm";
 
-      # systemd
-      ctl = "systemctl";
-      stl = ifSudo "s systemctl";
-      utl = "systemctl --user";
-      ut = "systemctl --user start";
-      un = "systemctl --user stop";
-      up = ifSudo "s systemctl start";
-      dn = ifSudo "s systemctl stop";
-      jtl = "journalctl";
+    # systemd
+    ctl = "systemctl";
+    stl = ifSudo "s systemctl";
+    utl = "systemctl --user";
+    ut = "systemctl --user start";
+    un = "systemctl --user stop";
+    up = ifSudo "s systemctl start";
+    dn = ifSudo "s systemctl stop";
+    jtl = "journalctl";
+  };
+
+  fonts = let
+    nerdfonts = pkgs.nerdfonts.override {
+      fonts = ["DejaVuSansMono"];
     };
+  in {
+    fonts = [nerdfonts pkgs.powerline-fonts pkgs.dejavu_fonts];
+    fontconfig.defaultFonts = {
+      monospace = [
+        "DejaVu Sans Mono Nerd Font Complete Mono"
+        "DejaVu Sans Mono for Powerline"
+      ];
 
-  fonts =
-    let nerdfonts = pkgs.nerdfonts.override {
-      fonts = [ "DejaVuSansMono" ];
+      sansSerif = ["DejaVu Sans"];
     };
-    in
-    {
-      fonts = [ nerdfonts pkgs.powerline-fonts pkgs.dejavu_fonts ];
-      fontconfig.defaultFonts = {
-        monospace = [
-          "DejaVu Sans Mono Nerd Font Complete Mono"
-          "DejaVu Sans Mono for Powerline"
-        ];
-
-        sansSerif = [ "DejaVu Sans" ];
-      };
-    };
+  };
 
   programs.gnupg.agent = {
     enable = true;

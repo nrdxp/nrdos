@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
-let inherit (lib) fileContents;
-in
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
+  inherit (lib) fileContents;
+in {
   # flake registry
-  nix.registry = builtins.mapAttrs (_: flake: { inherit flake; }) inputs;
+  nix.registry = builtins.mapAttrs (_: flake: {inherit flake;}) inputs;
 
   nix.package = pkgs.nixVersions.stable;
   nix.extraOptions = ''
@@ -17,8 +22,8 @@ in
     gc.persistent = true;
     optimise.automatic = true;
     useSandbox = true;
-    allowedUsers = [ "@wheel" ];
-    trustedUsers = [ "root" "@wheel" ];
+    allowedUsers = ["@wheel"];
+    trustedUsers = ["root" "@wheel"];
     nixPath = [
       "nixpkgs=${inputs.nixos}"
       "home-manager=${inputs.home-manager}"

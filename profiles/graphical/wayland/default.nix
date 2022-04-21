@@ -1,5 +1,10 @@
-{ pkgs, lib, config, ... }: {
-  imports = [ ../. ];
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  imports = [../.];
 
   environment.systemPackages = with pkgs; [
     alacritty
@@ -7,7 +12,7 @@
     qt5.qtwayland
     slurp
     swaybg
-    (waybar.override { pulseSupport = config.hardware.pulseaudio.enable || config.services.pipewire.pulse.enable; })
+    (waybar.override {pulseSupport = config.hardware.pulseaudio.enable || config.services.pipewire.pulse.enable;})
     wl-clipboard
     (wofi.overrideAttrs (_: {
       preFixup = ''
@@ -18,7 +23,6 @@
     }))
     wofi-emoji
   ];
-
 
   programs.tmux.extraConfig = lib.mkBefore ''
     set -g @override_copy_command 'wl-copy'
@@ -38,9 +42,11 @@
     gtkUsePortal = true;
   };
 
-  home-manager.sharedModules = lib.mkIf (config ? home-manager) [{
-    services.dunst.enable = true;
-    services.dunst.configFile = ./dunstrc;
-    services.dunst.waylandDisplay = "wayland-0";
-  }];
+  home-manager.sharedModules = lib.mkIf (config ? home-manager) [
+    {
+      services.dunst.enable = true;
+      services.dunst.configFile = ./dunstrc;
+      services.dunst.waylandDisplay = "wayland-0";
+    }
+  ];
 }

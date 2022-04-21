@@ -1,12 +1,18 @@
-{ pkgs, lib, config, ... }:
-let inherit (builtins) readFile;
-in
 {
-  imports = [ ../network ./im ./qutebrowser ];
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  inherit (builtins) readFile;
+in {
+  imports = [../network ./im ./qutebrowser];
 
-  home-manager.sharedModules = lib.mkIf (config ? home-manager) [{
-    imports = [ ./hm-alacritty ];
-  }];
+  home-manager.sharedModules = lib.mkIf (config ? home-manager) [
+    {
+      imports = [./hm-alacritty];
+    }
+  ];
 
   services.xserver.displayManager.gdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
@@ -22,7 +28,7 @@ in
   services.pipewire.pulse.enable = true;
   security.rtkit.enable = true;
 
-  systemd.user.services.pipewire-pulse.path = [ pkgs.pulseaudio ];
+  systemd.user.services.pipewire-pulse.path = [pkgs.pulseaudio];
 
   services.xserver.libinput.enable = true;
 
@@ -46,18 +52,16 @@ in
     mode = "444";
   };
 
-  environment.sessionVariables.GTK2_RC_FILES =
-    let
-      gtk = ''
-        gtk-icon-theme-name="Papirus"
-        gtk-cursor-theme-name="Adwaita"
-      '';
-    in
-    [
-      ("${pkgs.writeText "iconrc" "${gtk}"}")
-      "${pkgs.adapta-gtk-theme}/share/themes/Adapta/gtk-2.0/gtkrc"
-      "${pkgs.gnome3.gnome-themes-extra}/share/themes/Adwaita/gtk-2.0/gtkrc"
-    ];
+  environment.sessionVariables.GTK2_RC_FILES = let
+    gtk = ''
+      gtk-icon-theme-name="Papirus"
+      gtk-cursor-theme-name="Adwaita"
+    '';
+  in [
+    "${pkgs.writeText "iconrc" "${gtk}"}"
+    "${pkgs.adapta-gtk-theme}/share/themes/Adapta/gtk-2.0/gtkrc"
+    "${pkgs.gnome3.gnome-themes-extra}/share/themes/Adwaita/gtk-2.0/gtkrc"
+  ];
 
   # Packages
   environment.systemPackages = with pkgs; [
@@ -90,5 +94,4 @@ in
       ''
     )
   ];
-
 }

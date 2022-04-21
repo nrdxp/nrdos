@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  imports = [ ../. ];
+{pkgs, ...}: {
+  imports = [../.];
 
   environment.systemPackages = with pkgs; [
     farbfeld
@@ -13,7 +13,7 @@
   services.xserver.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
-    config = import ./xmonad.hs.nix { inherit pkgs; };
+    config = import ./xmonad.hs.nix {inherit pkgs;};
   };
 
   services.picom = {

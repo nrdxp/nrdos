@@ -1,10 +1,12 @@
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config.services.qbittorrent) port;
   inherit (lib) mkAfter;
-in
-{
-  imports = [ ./qbittorrent.nix ];
+in {
+  imports = [./qbittorrent.nix];
 
   services.qbittorrent = {
     enable = true;
@@ -12,5 +14,5 @@ in
     openFirewall = true;
   };
 
-  users.groups.media.members = [ "qbittorrent" ];
+  users.groups.media.members = ["qbittorrent"];
 }

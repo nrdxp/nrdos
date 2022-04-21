@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   # for work
   environment.sessionVariables.DEVSHELL_TARGET = "ops";
 

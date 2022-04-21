@@ -1,3 +1,2 @@
-{ lib, ... }:
+{lib, ...}:
 lib.importTOML ./alacritty.toml
-

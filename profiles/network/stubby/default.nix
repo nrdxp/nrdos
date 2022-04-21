@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   services.stubby = {
     enable = true;
     upstreamServers = ''

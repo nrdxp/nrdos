@@ -7,24 +7,30 @@
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
   inputs.vivarium.url = "github:nrdxp/vivarium";
 
-  outputs = inputs@{ self, nixos, home-manager, nixos-hardware, ... }:
-    let inherit (nixos) lib; in
-    {
-      nixosConfigurations.latitude = lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
+  outputs = inputs @ {
+    self,
+    nixos,
+    home-manager,
+    nixos-hardware,
+    ...
+  }: let
+    inherit (nixos) lib;
+  in {
+    nixosConfigurations.latitude = lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {inherit inputs;};
 
-        modules = [
-          ./hosts/latitude
-          ./profiles/users/nrd.nix
+      modules = [
+        ./hosts/latitude
+        ./profiles/users/nrd.nix
 
-          # home-manager
-          home-manager.nixosModules.home-manager
+        # home-manager
+        home-manager.nixosModules.home-manager
 
-          # nixos-hardware
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
-        ];
-      };
+        # nixos-hardware
+        nixos-hardware.nixosModules.common-cpu-intel
+        nixos-hardware.nixosModules.common-pc-laptop-ssd
+      ];
     };
+  };
 }

@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  imports = [ ../../lang/python ../../lang/haskell ];
+{pkgs, ...}: {
+  imports = [../../lang/python ../../lang/haskell];
 
   environment.systemPackages = with pkgs; [
     clang-tools
@@ -7,7 +7,7 @@
     kak-lsp
     kakoune-config
     kakoune
-    nixpkgs-fmt
+    alejandra
     #python3Packages.python-language-server
     rustup
     nix-linter
@@ -28,10 +28,8 @@
     "xdg/kak/autoload/plugins-config".source = ./plugins;
     "xdg/kak/autoload/lint".source = ./lint;
     "xdg/kak/autoload/lsp".source = ./lsp;
-    "xdg/kak/autoload/default".source =
-      "${pkgs.kakoune}/share/kak/rc";
-    "xdg/kak/autoload/plugins".source =
-      "${pkgs.kakoune}/share/kak/autoload/plugins";
+    "xdg/kak/autoload/default".source = "${pkgs.kakoune}/share/kak/rc";
+    "xdg/kak/autoload/plugins".source = "${pkgs.kakoune}/share/kak/autoload/plugins";
   };
 
   nixpkgs.overlays = [

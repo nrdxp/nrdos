@@ -1,11 +1,15 @@
-{ lib, config, options, pkgs, ... }:
-let
+{
+  lib,
+  config,
+  options,
+  pkgs,
+  ...
+}: let
   inherit (builtins) readFile;
 
   inherit (config.hardware) pulseaudio;
-in
-{
-  imports = [ ../. ];
+in {
+  imports = [../.];
 
   programs.sway = {
     enable = true;
@@ -21,7 +25,8 @@ in
     '';
 
     extraPackages = with pkgs;
-      options.programs.sway.extraPackages.default ++ [
+      options.programs.sway.extraPackages.default
+      ++ [
         dmenu
         networkmanager_dmenu
         volnoti
@@ -29,22 +34,23 @@ in
   };
 
   environment.etc = {
-    "sway/config".text =
-      let volnoti = import ../../volnoti.nix { inherit pkgs; };
-      in
-      ''
-        set $volume ${volnoti}
-        set $mixer "${pkgs.alsaUtils}/bin/amixer -q set Master"
+    "sway/config".text = let
+      volnoti = import ../../volnoti.nix {inherit pkgs;};
+    in ''
+      set $volume ${volnoti}
+      set $mixer "${pkgs.alsaUtils}/bin/amixer -q set Master"
 
-        # set background
-        output * bg ${pkgs.adapta-backgrounds}/share/backgrounds/adapta/tri-fadeno.jpg fill
+      # set background
+      output * bg ${pkgs.adapta-backgrounds}/share/backgrounds/adapta/tri-fadeno.jpg fill
 
-        ${readFile ./config}
-      '';
+      ${readFile ./config}
+    '';
   };
 
-  services.redshift = lib.mkIf
-    ((builtins.tryEval config.location.latitude).success
+  services.redshift =
+    lib.mkIf
+    (
+      (builtins.tryEval config.location.latitude).success
       && (builtins.tryEval config.location.longitude).success
     )
     {
@@ -55,19 +61,19 @@ in
   systemd.user.targets.sway-session = {
     enable = true;
     description = "sway compositor session";
-    documentation = [ "man:systemd.special(7)" ];
+    documentation = ["man:systemd.special(7)"];
 
-    bindsTo = [ "graphical-session.target" ];
-    wants = [ "graphical-session-pre.target" ];
-    after = [ "graphical-session-pre.target" ];
-    requiredBy = [ "graphical-session.target" "graphical-session-pre.target" ];
+    bindsTo = ["graphical-session.target"];
+    wants = ["graphical-session-pre.target"];
+    after = ["graphical-session-pre.target"];
+    requiredBy = ["graphical-session.target" "graphical-session-pre.target"];
   };
 
   systemd.user.services.volnoti = {
     enable = true;
     description = "volnoti volume notification";
-    documentation = [ "volnoti --help" ];
-    wantedBy = [ "sway-session.target" ];
+    documentation = ["volnoti --help"];
+    wantedBy = ["sway-session.target"];
 
     script = "${pkgs.volnoti}/bin/volnoti -n";
 

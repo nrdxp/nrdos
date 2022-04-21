@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  imports = [ ./udev.nix ];
+{pkgs, ...}: {
+  imports = [./udev.nix];
   environment.systemPackages = with pkgs; [
     retroarchBare
     pcsx2
@@ -12,7 +12,7 @@
   services.xserver.libinput.disableWhileTyping = false;
 
   # Launch steam from display managers
-  services.xserver.windowManager.steam = { enable = true; };
+  services.xserver.windowManager.steam = {enable = true;};
 
   # 32-bit support needed for steam
   hardware.opengl.driSupport32Bit = true;
@@ -22,5 +22,5 @@
   systemd.extraConfig = "DefaultLimitNOFILE=1048576";
 
   # improve wine performance
-  environment.sessionVariables = { WINEDEBUG = "-all"; };
+  environment.sessionVariables = {WINEDEBUG = "-all";};
 }

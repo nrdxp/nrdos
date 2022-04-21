@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     acpi
     lm_sensors
@@ -15,13 +20,13 @@
     enable = true;
     bindings = [
       {
-        keys = [ 225 ];
-        events = [ "key" ];
+        keys = [225];
+        events = ["key"];
         command = "/run/current-system/sw/bin/light -A 5";
       }
       {
-        keys = [ 224 ];
-        events = [ "key" ];
+        keys = [224];
+        events = ["key"];
         command = "/run/current-system/sw/bin/light -U 5";
       }
     ];
@@ -45,18 +50,16 @@
   };
   services.logind.lidSwitch = "suspend";
 
-  nixpkgs.overlays =
-    let
-      light_ov = self: super: {
-        light = super.light.overrideAttrs (o: {
-          src = self.fetchFromGitHub {
-            owner = "haikarainen";
-            repo = "light";
-            rev = "ae7a6ebb45a712e5293c7961eed8cceaa4ebf0b6";
-            sha256 = "00z9bxrkjpfmfhz9fbf6mjbfqvixx6857mvgmiv01fvvs0lr371n";
-          };
-        });
-      };
-    in
-    [ light_ov ];
+  nixpkgs.overlays = let
+    light_ov = self: super: {
+      light = super.light.overrideAttrs (o: {
+        src = self.fetchFromGitHub {
+          owner = "haikarainen";
+          repo = "light";
+          rev = "ae7a6ebb45a712e5293c7961eed8cceaa4ebf0b6";
+          sha256 = "00z9bxrkjpfmfhz9fbf6mjbfqvixx6857mvgmiv01fvvs0lr371n";
+        };
+      });
+    };
+  in [light_ov];
 }
