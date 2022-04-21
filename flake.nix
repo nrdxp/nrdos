@@ -6,6 +6,7 @@
   inputs.home-manager.inputs.nixpkgs.follows = "nixos";
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
   inputs.vivarium.url = "github:nrdxp/vivarium";
+  inputs.nix.url = "github:nixos/nix/2.8.0";
 
   outputs = inputs @ {
     self,

@@ -10,7 +10,7 @@ in {
   # flake registry
   nix.registry = builtins.mapAttrs (_: flake: {inherit flake;}) inputs;
 
-  nix.package = pkgs.nixVersions.stable;
+  nix.package = inputs.nix.packages.${pkgs.system}.nix;
   nix.extraOptions = ''
     experimental-features = flakes nix-command
   '';
