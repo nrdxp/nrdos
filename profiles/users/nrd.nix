@@ -10,6 +10,12 @@
   };
 
   home-manager.users.nrd = {
-    programs.git = lib.importTOML ./gitconfig.toml;
+    programs.git.extraConfig = {
+      user.name = "Timothy DeHerrera";
+      user.signingKey = "19B7285E0F84A536";
+      user.email = "tim@nrdxp.dev";
+
+      commit.gpgSign = true;
+    };
   };
 }

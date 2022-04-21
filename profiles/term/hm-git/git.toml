@@ -1,8 +1,7 @@
-[programs.git]
 enable = true
 extraConfig.pull.rebase = false
 
-[programs.git.aliases]
+[aliases]
 a = "add -p"
 co = "checkout"
 cob = "checkout -b"

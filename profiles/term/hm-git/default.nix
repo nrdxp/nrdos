@@ -1,2 +1,4 @@
 { lib, ... }:
-lib.importTOML ./git.toml
+{
+  programs.git = lib.importTOML ./git.toml;
+}
