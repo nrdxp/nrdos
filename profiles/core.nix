@@ -13,6 +13,8 @@ in
   nix = {
     autoOptimiseStore = true;
     gc.automatic = true;
+    gc.dates = "weekly";
+    gc.persistent = true;
     optimise.automatic = true;
     useSandbox = true;
     allowedUsers = [ "@wheel" ];
