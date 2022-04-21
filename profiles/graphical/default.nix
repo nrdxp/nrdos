@@ -10,6 +10,7 @@ in
 
   services.xserver.displayManager.gdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
+  services.accounts-daemon.enable = true;
 
   programs.dconf.enable = true;
 
