@@ -35,7 +35,12 @@ in {
     systemPackages = with pkgs; [
       qutebrowser
       mpv
-      youtube-dl
+      (yt-dlp.overrideAttrs (_: {
+        postInstall = ''
+          ln -s "$out/bin/yt-dlp" "$out/bin/youtube-dl"
+          ln -s "$out/share/zsh/site-functions/_yt-dlp" "$out/share/zsh/site-functions/_youtube-dl"
+        '';
+      }))
       rofi
     ];
   };
