@@ -55,6 +55,7 @@ in {
       gzip
       lrzip
       p7zip
+      unzip
       procs
       skim
       xz
