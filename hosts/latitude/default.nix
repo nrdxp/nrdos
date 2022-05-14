@@ -1,6 +1,7 @@
 {
   imports = [
     ../../profiles/term
+    ../../profiles/term/helix
     ../../profiles/core.nix
     ../../profiles/laptop
     ../../profiles/graphical/x11/xmonad

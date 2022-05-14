@@ -12,8 +12,7 @@ in {
 
   nix.package = inputs.nix.packages.${pkgs.system}.nix;
   nix.extraOptions = ''
-    experimental-features = flakes nix-command
-  '';
+    experimental-features = flakes nix-command impure-derivations ca-derivations'';
 
   nix = {
     autoOptimiseStore = true;

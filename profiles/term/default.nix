@@ -18,8 +18,8 @@
     PAGER = "less";
     LESS = "-iFJMRWX -z-4 -x4";
     LESSOPEN = "|${pkgs.lesspipe}/bin/lesspipe.sh %s";
-    EDITOR = "k";
-    VISUAL = "k";
+    EDITOR = "hx";
+    VISUAL = "hx";
   };
 
   environment.systemPackages = with pkgs; [
