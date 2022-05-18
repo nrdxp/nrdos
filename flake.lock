@@ -134,11 +134,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1652559647,
-        "narHash": "sha256-e1uul5r47UMLySbRMKExIjfcO4U9khZlMtZSTpngrCk=",
+        "lastModified": 1652569325,
+        "narHash": "sha256-YZFpZJyI53zk0BuDP9W0WFdJSgWIyO2lVjYOtMZPFnY=",
         "owner": "nrdxp",
         "repo": "helix",
-        "rev": "8db9d140493a4d516c80691ddfac899a4af90921",
+        "rev": "0ca07a9efbb8c77361527745388fd3aa703dbf75",
         "type": "github"
       },
       "original": {
@@ -236,11 +236,11 @@
     },
     "nixos": {
       "locked": {
-        "lastModified": 1651726670,
-        "narHash": "sha256-dSGdzB49SEvdOJvrQWfQYkAefewXraHIV08Vz6iDXWQ=",
+        "lastModified": 1652378906,
+        "narHash": "sha256-DeV2myAMArPvyqxp0M6z30kuXb2L9SO2QXjxbbsZQyY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c777cdf5c564015d5f63b09cc93bef4178b19b01",
+        "rev": "d89d7af1ba23bd8a5341d00bdd862e8e9a808f56",
         "type": "github"
       },
       "original": {
@@ -296,6 +296,22 @@
         "type": "indirect"
       }
     },
+    "registry": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1649622121,
+        "narHash": "sha256-0aumhaIc5DWeY5t3fflyUACcT+ADOS7CAEYVqcSkifE=",
+        "owner": "NixOS",
+        "repo": "flake-registry",
+        "rev": "5e7e4d3227259eb961bbd5926bad9d609a29a988",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "flake-registry",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "helix": "helix",
@@ -303,6 +319,7 @@
         "nix": "nix",
         "nixos": "nixos",
         "nixos-hardware": "nixos-hardware",
+        "registry": "registry",
         "vivarium": "vivarium"
       }
     },

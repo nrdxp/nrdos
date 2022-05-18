@@ -28,6 +28,7 @@ in {
       "home-manager=${inputs.home-manager}"
       "nixos-config=/etc/nixos/configuration.nix"
     ];
+    settings.flake-registry = "${inputs.registry}/flake-registry.json";
   };
 
   services.earlyoom.enable = true;
