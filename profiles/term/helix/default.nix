@@ -21,9 +21,17 @@
       programs.helix.settings = {
         theme = "snazzy";
         keys.normal = {
+          n = "extend_search_next";
+          N = "extend_search_prev";
+          A-n = "search_next";
+          A-N = "search_prev";
           C-s = ":w";
           C-q = ":q";
           C-w = "rotate_view";
+          C-p = "file_picker";
+          C-b = "buffer_picker";
+          C-A-n = ":bn";
+          C-A-p = ":bp";
           y = ["yank" "yank_joined_to_clipboard"];
         };
         keys.insert.j.j = "normal_mode";
