@@ -21,12 +21,12 @@
   }: let
     inherit (nixos) lib;
   in {
-    nixosConfigurations.latitude = lib.nixosSystem {
+    nixosConfigurations.triton = lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {inherit inputs;};
 
       modules = [
-        ./hosts/latitude
+        ./hosts/triton
         ./profiles/users/nrd.nix
 
         # home-manager
@@ -34,7 +34,6 @@
 
         # nixos-hardware
         nixos-hardware.nixosModules.common-cpu-intel
-        nixos-hardware.nixosModules.common-pc-laptop-ssd
       ];
     };
   };
