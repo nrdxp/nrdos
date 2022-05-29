@@ -12,7 +12,6 @@ in {
     enable = true;
     group = "media";
     openFirewall = true;
+    dataDir = "/srv/qbittorrent";
   };
-
-  users.groups.media.members = ["qbittorrent"];
 }

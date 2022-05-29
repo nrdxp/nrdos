@@ -111,7 +111,13 @@ in {
       };
     };
 
-    users.groups =
-      mkIf (cfg.group == "qbittorrent") {qbittorrent = {gid = null;};};
+    systemd.tmpfiles.rules = [
+      "Q ${cfg.dataDir} 0775 ${cfg.user} ${cfg.group} -"
+    ];
+
+    users.groups.${cfg.group} = {
+      gid = null;
+      members = [cfg.user];
+    };
   };
 }
