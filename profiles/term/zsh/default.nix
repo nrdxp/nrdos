@@ -33,6 +33,8 @@ in {
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
 
+      os = "nixos-rebuild --use-remote-sudo";
+
       df = "df -h";
       du = "du -h";
 
