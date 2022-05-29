@@ -21,10 +21,10 @@
       programs.helix.settings = {
         theme = "snazzy";
         keys.normal = {
-          n = "extend_search_next";
-          N = "extend_search_prev";
-          A-n = "search_next";
-          A-N = "search_prev";
+          n = "search_next";
+          N = "search_prev";
+          A-n = "extend_search_next";
+          A-N = "extend_search_prev";
           C-s = ":w";
           C-q = ":q";
           C-w = "rotate_view";
