@@ -7,7 +7,6 @@
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
   inputs.vivarium.url = "github:nrdxp/vivarium";
   inputs.nix.url = "github:nixos/nix/2.8-maintenance";
-  inputs.nix.inputs.nixpkgs.follows = "nixos";
   inputs.helix.url = "github:nrdxp/helix/update-nix";
   inputs.registry.url = "github:NixOS/flake-registry";
   inputs.registry.flake = false;
