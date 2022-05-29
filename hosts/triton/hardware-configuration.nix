@@ -39,12 +39,6 @@
   services.zfs.autoScrub.pools = ["tank"];
   services.zfs.autoSnapshot.enable = true;
 
-  # permissions
-  system.activationScripts.setPerms.text = ''
-    chmod 775 /srv
-    chown root:wheel /srv
-  '';
-
   fileSystems."/" = {
     device = "tank/local/root";
     fsType = "zfs";

@@ -22,4 +22,12 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
+  systemd.tmpfiles.rules = [
+    "Q /srv 0775 root wheel"
+  ];
+
+  environment.etc."tmpfiles.d/home.conf".text = ''
+    Q /home 0755 - - -
+  '';
 }
