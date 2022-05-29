@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ../../profiles/term
     ../../profiles/term/helix
@@ -20,4 +20,6 @@
     enable = true;
     mode = "challenge-response";
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 }
