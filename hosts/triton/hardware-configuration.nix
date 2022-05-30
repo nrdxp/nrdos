@@ -42,21 +42,31 @@
   fileSystems."/" = {
     device = "tank/local/root";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/nix" = {
     device = "tank/local/nix";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/var" = {
     device = "tank/safe/var";
     fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/home" = {
     device = "tank/safe/home";
     fsType = "zfs";
+    options = ["zfsutil"];
+  };
+
+  fileSystems."/srv" = {
+    device = "tank/safe/srv";
+    fsType = "zfs";
+    options = ["zfsutil"];
   };
 
   fileSystems."/boot" = {
@@ -72,11 +82,6 @@
   fileSystems."/boot-1" = {
     device = "/dev/disk/by-uuid/5EB7-6B63";
     fsType = "vfat";
-  };
-
-  fileSystems."/srv" = {
-    device = "tank/safe/srv";
-    fsType = "zfs";
   };
 
   swapDevices = [];
