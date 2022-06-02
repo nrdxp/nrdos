@@ -34,6 +34,8 @@ in {
       cat = "${pkgs.bat}/bin/bat";
 
       os = "nixos-rebuild --use-remote-sudo";
+      oss = "os switch";
+      osb = "os build";
 
       df = "df -h";
       du = "du -h";
