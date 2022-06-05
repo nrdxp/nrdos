@@ -8,4 +8,7 @@
       contents.user.email = "tim.deherrera@iohk.io";
     }
   ];
+
+  services.tailscale.enable = true;
+  networking.firewall.checkReversePath = "loose";
 }
