@@ -32,3 +32,12 @@ rank = "shortlog -sn --no-merges"
 
 # delete merged branches
 bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+
+[extraConfig.url."ssh://git@github.com/"]
+insteadOf = "https://github.com/"
+
+[extraConfig.url."ssh://git@gitlab.com/"]
+insteadOf = "https://gitlab.com/"
+
+[extraConfig.ghq]
+root = "~/git"
