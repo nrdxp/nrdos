@@ -10,8 +10,8 @@ hash -d \
   git=~/git
 
 hash -d \
-  github=~git/github.com \
-  gitlab=~git/gitlab.com
+  hub=~git/github.com \
+  lab=~git/gitlab.com
 
 
 # key binds
