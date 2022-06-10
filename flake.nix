@@ -20,9 +20,10 @@
     ...
   }: let
     inherit (nixos) lib;
+    system = "x86_64-linux";
   in {
     nixosConfigurations.triton = lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       specialArgs = {inherit inputs;};
 
       modules = [
