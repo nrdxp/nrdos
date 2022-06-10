@@ -25,7 +25,7 @@
 
   # profile-sync daemon
   services.psd.enable = true;
-  systemd.user.services.psd.path = [ pkgs.glib ];
+  systemd.user.services.psd.path = [pkgs.glib];
   security.sudo.execWheelOnly = true;
   security.sudo.extraRules = [
     {
