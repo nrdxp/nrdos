@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../../profiles/term
     ../../profiles/term/helix
@@ -15,6 +19,9 @@
   hardware.enableAllFirmware = true;
 
   services.pcscd.enable = true;
+
+  nix.settings.max-jobs = 18;
+  systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 16384;
 
   # profile-sync daemon
   services.psd.enable = true;
