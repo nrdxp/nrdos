@@ -10,6 +10,7 @@
     ../../profiles/core.nix
     ../../profiles/laptop
     ../../profiles/graphical/x11/xmonad
+    ../../profiles/graphical/games
     ../../profiles/graphical/wayland/vivarium
     ../../profiles/virt
     ../../profiles/work/iog
