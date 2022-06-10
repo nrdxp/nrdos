@@ -308,6 +308,22 @@
         "type": "indirect"
       }
     },
+    "qutebrowser-nixpkgs": {
+      "locked": {
+        "lastModified": 1654501190,
+        "narHash": "sha256-W61WgQ05DQsMkatLVMfE605aChpLhwUCEdFBUIyPqrI=",
+        "owner": "nrdxp",
+        "repo": "nixpkgs",
+        "rev": "0b766f992046b9c5a0fc24086335979fa99d9e7c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nrdxp",
+        "ref": "pyqt6-new",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "registry": {
       "flake": false,
       "locked": {
@@ -331,6 +347,7 @@
         "nix": "nix",
         "nixos": "nixos",
         "nixos-hardware": "nixos-hardware",
+        "qutebrowser-nixpkgs": "qutebrowser-nixpkgs",
         "registry": "registry",
         "vivarium": "vivarium"
       }

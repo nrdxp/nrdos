@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: let
   inherit (builtins) readFile;
@@ -21,7 +22,7 @@
         config.bind(',m', 'hint links spawn -d ${mpv} {hint-url}')
         config.bind(',v', 'spawn -d ${mpv} {url}')
       ''
-      + lib.optionalString config.services.qbittorrent.enable ''
+      + lib.optionalString (config.services ? qbittorrent && config.services.qbittorrent.enable) ''
         config.bind(',t', """hint all spawn curl -X POST\
           -F "urls={hint-url}"\
           -F "sequentialDownload=true"\
@@ -47,7 +48,7 @@ in {
 
   nixpkgs.overlays = [
     (final: prev: {
-      qutebrowser = prev.qutebrowser.overrideAttrs (self: {
+      qutebrowser = inputs.qutebrowser-nixpkgs.legacyPackages.${pkgs.system}.qutebrowser.overrideAttrs (self: {
         preFixup =
           self.preFixup
           + ''

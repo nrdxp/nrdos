@@ -14,7 +14,7 @@
       "L+ /home/nrd/git - - - - /srv/git"
       "L+ /home/nrd/work - - - - git/github.com/input-output-hk"
     ]
-    ++ lib.optional config.services.qbittorrent.enable
+    ++ lib.optional (config.services ? qbittorrent && config.services.qbittorrent.enable)
     "L+ /home/nrd/torrents - - - - ${config.services.qbittorrent.dataDir}/.config/qBittorrent/downloads";
 
   users.users.nrd = {
