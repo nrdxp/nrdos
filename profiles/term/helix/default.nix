@@ -21,10 +21,25 @@
       programs.helix.settings = {
         theme = "snazzy";
         keys.normal = {
+          # --- Kakoune Like ---
+          # w = "extend_move_next_word_start";
+          # b = "extend_move_prev_word_start";
+          # e = "extend_move_next_word_end";
+          # W = "extend_move_next_long_word_start";
+          # B = "extend_move_prev_long_word_start";
+          # E = "extend_move_next_long_word_end";
+          # t = "extend_find_till_char";
+          # f = "extend_find_next_char";
+          # T = "extend_till_prev_char";
+          # F = "extend_find_prev_char";
+
+          # emulate kakoune's defuault search behavior
           n = "search_next";
           N = "search_prev";
           A-n = "extend_search_next";
           A-N = "extend_search_prev";
+          # --------------------
+
           C-s = ":w";
           C-q = ":q";
           C-w = "rotate_view";
