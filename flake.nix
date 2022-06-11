@@ -11,6 +11,8 @@
   inputs.helix.url = "github:helix-editor/helix";
   inputs.registry.url = "github:NixOS/flake-registry";
   inputs.registry.flake = false;
+  inputs.secrets.url = "github:nrdxp/nrdos-secrets";
+  inputs.secrets.flake = false;
 
   outputs = inputs @ {
     self,

@@ -349,6 +349,7 @@
         "nixos-hardware": "nixos-hardware",
         "qutebrowser-nixpkgs": "qutebrowser-nixpkgs",
         "registry": "registry",
+        "secrets": "secrets",
         "vivarium": "vivarium"
       }
     },
@@ -371,6 +372,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1654914380,
+        "narHash": "sha256-mswuQ81fJVz1rs0FbKP3woCy9MLg4XJ3n5sMvq/16Aw=",
+        "owner": "nrdxp",
+        "repo": "nrdos-secrets",
+        "rev": "1dc94a7456988df6f776c050477e5da70cab9f61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nrdxp",
+        "repo": "nrdos-secrets",
         "type": "github"
       }
     },

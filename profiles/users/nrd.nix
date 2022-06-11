@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   config,
   ...
@@ -24,6 +25,8 @@
   };
 
   home-manager.users.nrd = {
+    imports = [(import ./secrets.nix inputs.secrets)];
+
     programs.git.extraConfig = {
       user.name = "Timothy DeHerrera";
       user.signingKey = "19B7285E0F84A536";
