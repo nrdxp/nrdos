@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./zfs-yubi.nix
     ../../profiles/term
     ../../profiles/term/helix
     ../../profiles/core.nix
