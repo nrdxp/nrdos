@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: let
   inherit (builtins) readFile;
@@ -30,6 +29,8 @@
         )
       '');
 in {
+  imports = [../.];
+
   environment = {
     sessionVariables.BROWSER = "qutebrowser";
 
@@ -47,8 +48,19 @@ in {
   };
 
   nixpkgs.overlays = [
-    (final: prev: {
-      qutebrowser = inputs.qutebrowser-nixpkgs.legacyPackages.${pkgs.system}.qutebrowser.overrideAttrs (self: {
+    (final: prev: let
+      qbQt6Pkgs =
+        import (pkgs.fetchFromGitHub {
+          owner = "nrdxp";
+          repo = "nixpkgs";
+          rev = "pyqt6-new";
+          hash = "sha256-W61WgQ05DQsMkatLVMfE605aChpLhwUCEdFBUIyPqrI=";
+        }) {
+          inherit (pkgs) system;
+          inherit (config.nixpkgs) config;
+        };
+    in {
+      qutebrowser = qbQt6Pkgs.qutebrowser.overrideAttrs (self: {
         preFixup =
           self.preFixup
           + ''

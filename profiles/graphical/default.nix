@@ -6,15 +6,8 @@
 }: let
   inherit (builtins) readFile;
 in {
-  imports = [../network ./im ./qutebrowser];
+  services.earlyoom.enable = true;
 
-  home-manager.sharedModules = lib.mkIf (config ? home-manager) [
-    {
-      imports = [./hm-alacritty];
-    }
-  ];
-
-  services.xserver.displayManager.gdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.accounts-daemon.enable = true;
 
@@ -26,6 +19,7 @@ in {
 
   services.pipewire.enable = true;
   services.pipewire.pulse.enable = true;
+  hardware.pulseaudio.enable = lib.mkForce false;
   security.rtkit.enable = true;
 
   systemd.user.services.pipewire-pulse.path = [pkgs.pulseaudio];
@@ -39,8 +33,8 @@ in {
   # Theme
   gtk.iconCache.enable = true;
   qt5.enable = true;
-  qt5.platformTheme = "gtk2";
-  qt5.style = "gtk2";
+  qt5.platformTheme = lib.mkDefault "gtk2";
+  qt5.style = lib.mkDefault "gtk2";
 
   environment.etc."xdg/gtk-3.0/settings.ini" = {
     text = ''

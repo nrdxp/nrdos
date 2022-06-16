@@ -1,12 +1,8 @@
 {
-  inputs,
   lib,
   config,
   ...
 }: {
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-
   users.mutableUsers = false;
 
   systemd.tmpfiles.rules =
@@ -25,7 +21,7 @@
   };
 
   home-manager.users.nrd = {
-    imports = [(import ./secrets.nix inputs.secrets)];
+    imports = [./secrets.nix];
 
     programs.git.extraConfig = {
       user.name = "Timothy DeHerrera";

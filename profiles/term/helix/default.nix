@@ -1,8 +1,8 @@
 {
-  inputs,
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
   environment.systemPackages = with pkgs; [
