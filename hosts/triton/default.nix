@@ -22,6 +22,9 @@
 
   services.pcscd.enable = true;
 
+  # for protonvpn wireguard
+  networking.firewall.checkReversePath = "loose";
+
   nix.settings.max-jobs = 18;
   systemd.services.nix-daemon.serviceConfig.LimitNOFILE = lib.mkForce 16384;
 
