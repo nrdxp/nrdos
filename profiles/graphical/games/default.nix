@@ -15,6 +15,9 @@ in {
     retroarchBare
     pcsx2
     qjoypad
+    lutris
+    wine-wayland
+    winetricks
   ];
 
   services.udev.packages = [controlloid];
