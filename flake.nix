@@ -1,47 +1,61 @@
 {
   description = "A very basic flake";
 
-  inputs.nixos.url = "github:nixos/nixpkgs/nixos-unstable";
-  inputs.home-manager.url = "github:nix-community/home-manager";
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
-  inputs.vivarium.url = "github:nrdxp/vivarium";
-  inputs.nix.url = "github:nixos/nix/2.9-maintenance";
-  inputs.helix.url = "github:helix-editor/helix";
+  inputs.nixos.url = "nixpkgs/nixos-unstable";
+  inputs.release.url = "nixpkgs/nixos-22.05";
+
+  inputs.nix.url = "nix/2.9-maintenance";
   inputs.flake-registry.url = "github:NixOS/flake-registry";
   inputs.flake-registry.flake = false;
+
+  # user inputs
+  inputs.vivarium.url = "github:nrdxp/vivarium";
+  inputs.helix.url = "github:helix-editor/helix";
 
   outputs = inputs @ {
     self,
     nixos,
     home-manager,
     nixos-hardware,
+    release,
     ...
   }: let
     inherit (nixos) lib;
   in {
-    lib.nrdosSystem = {
+    lib.brew = modules: args @ {pkgs, ...}: {
+      imports =
+        [self.nixosProfiles.hmInit]
+        ++ map (profile:
+          import "${./profiles}/${profile}" ({
+              inherit inputs;
+            }
+            // args))
+        modules;
+    };
+
+    lib.nrdos = {
       flake ? self,
       modules ? [],
       system ? "x86_64-linux",
-    }:
-      flake.inputs.nixos.lib.nixosSystem {
+    }: let
+      inputs = flake.inputs // lib.optionalAttrs (!flake.inputs ? nixos) {nixos = release;};
+    in
+      inputs.nixos.lib.nixosSystem {
         inherit system;
 
-        specialArgs = {inherit (flake) inputs;};
+        specialArgs = {
+          inherit inputs;
+        };
 
         modules =
           [
             ./profiles/nix.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
+            self.nixosProfiles.hmInit
           ]
           ++ modules;
       };
 
-    nixosConfigurations.triton = self.lib.nrdosSystem {
+    nixosConfigurations.triton = self.lib.nrdos {
       modules = [
         ./hosts/triton
         ./profiles/users/nrd.nix
@@ -49,18 +63,18 @@
       ];
     };
 
-    nixosProfiles = lib.mapAttrs (_: v:
-      (modules: args @ {pkgs, ...}: {
-        imports = map (profile:
-          import "${./profiles}/${profile}" ({
-              inherit inputs;
-            }
-            // args))
-        modules;
-      })
-      v) {
-      vivarium = ["graphical/wayland/vivarium"];
-      nix = ["nix.nix"];
+    nixosProfiles = let
+      inherit (self.lib) brew;
+    in {
+      vivarium = brew ["graphical/wayland/vivarium"];
+      nix = brew ["nix.nix"];
+      hmInit = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        imports = [
+          home-manager.nixosModules.home-manager
+        ];
+      };
     };
   };
 }
