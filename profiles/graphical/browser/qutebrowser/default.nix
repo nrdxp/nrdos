@@ -54,7 +54,7 @@ in {
           owner = "nrdxp";
           repo = "nixpkgs";
           rev = "pyqt6-new";
-          hash = "sha256-W61WgQ05DQsMkatLVMfE605aChpLhwUCEdFBUIyPqrI=";
+          hash = "sha256-9/aidV7Q3jM55L7FdOl8A2Zt072gpTWnw6s80cbeqGY=";
         }) {
           inherit (pkgs) system;
           inherit (config.nixpkgs) config;
