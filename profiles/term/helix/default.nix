@@ -1,7 +1,5 @@
 {
   pkgs,
-  lib,
-  config,
   inputs,
   ...
 }: {
@@ -14,7 +12,7 @@
     taplo-lsp
     rnix-lsp
   ];
-  home-manager.sharedModules = lib.mkIf (config ? home-manager) [
+  home-manager.sharedModules = [
     {
       programs.helix.enable = true;
       programs.helix.package = inputs.helix.defaultPackage.${pkgs.system};

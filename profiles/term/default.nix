@@ -6,7 +6,7 @@
 }: {
   imports = [./zsh ./tmux ./kakoune];
 
-  home-manager.sharedModules = lib.mkIf (config ? home-manager) [
+  home-manager.sharedModules = [
     ./hm-git
     ./hm-direnv
   ];
