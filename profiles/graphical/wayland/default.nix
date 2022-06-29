@@ -42,7 +42,7 @@
     gtkUsePortal = true;
   };
 
-  home-manager.sharedModules = lib.mkIf (config ? home-manager) [
+  home-manager.sharedModules = [
     {
       services.dunst.enable = true;
       services.dunst.configFile = ./dunstrc;

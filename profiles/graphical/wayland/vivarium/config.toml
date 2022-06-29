@@ -108,13 +108,13 @@ action = "terminate"
 [[keybind]]
 keysym = "T"
 action = "do_exec"
-executable = "alacritty"
+executable = "kitty"
 
 [[keybind]]
 modifiers = ["meta", "shift"]
 keysym = "Return"
 action = "do_exec"
-executable = "alacritty"
+executable = "kitty"
 
 [[keybind]]
 keysym = "l"

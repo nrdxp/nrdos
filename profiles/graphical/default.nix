@@ -6,6 +6,10 @@
 }: let
   inherit (builtins) readFile;
 in {
+  home-manager.sharedModules = [
+    ./hm-kitty
+  ];
+
   services.earlyoom.enable = true;
 
   services.gnome.gnome-keyring.enable = true;

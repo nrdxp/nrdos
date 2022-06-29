@@ -33,7 +33,7 @@ import qualified XMonad.StackSet                     as S (StackSet, greedyView,
 main :: IO ()
 main =
   xmonad . ewmh $ desktopConfig
-  { terminal           = "alacritty"
+  { terminal           = "kitty"
   , modMask            = myModKey
   , layoutHook         = avoidStruts myLayout
   , workspaces         = myWorkspaces

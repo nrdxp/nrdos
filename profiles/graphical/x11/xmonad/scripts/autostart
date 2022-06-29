@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-terminal="alacritty"
+terminal="kitty"
 
 # set screen locker to slock
 pgrep -x xss-lock \
