@@ -10,7 +10,7 @@
 
   # user inputs
   inputs.vivarium.url = "github:nrdxp/vivarium";
-  inputs.helix.url = "github:helix-editor/helix";
+  inputs.helix.url = "github:Philipp-M/helix/path-completion";
 
   outputs = inputs @ {
     self,

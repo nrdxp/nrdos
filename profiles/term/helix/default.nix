@@ -34,15 +34,6 @@
         };
         keys.insert.j.j = "normal_mode";
       };
-      programs.helix.languages = [
-        {
-          name = "toml";
-          language-server = {
-            command = "taplo-lsp";
-            args = ["run"];
-          };
-        }
-      ];
     }
   ];
 }
