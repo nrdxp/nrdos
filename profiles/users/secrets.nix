@@ -3,9 +3,12 @@
   pkgs,
   ...
 }: let
-  secrets = builtins.fetchurl {
-    url = "https://github.com/nrdxp/nrdos-secrets/archive/master.tar.gz";
-    sha256 = "sha256:0psdl295zq92w67jcakz4lkl1j434w22rk1dw23wwi3bnpfh2j5m";
+  secrets = builtins.fetchTree {
+    type = "github";
+    owner = "nrdxp";
+    repo = "nrdos-secrets";
+    ref = "master";
+    narHash = "sha256-mswuQ81fJVz1rs0FbKP3woCy9MLg4XJ3n5sMvq/16Aw=";
   };
 in {
   home.activation.writeSecrets = lib.hm.dag.entryAfter ["writeBoundary"] ''
