@@ -1,21 +1,42 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
-}: {
-  environment.systemPackages = with pkgs; [
-    inputs.helix.defaultPackage.${system}
-    nodePackages.bash-language-server
-    shellcheck
-    yaml-language-server
-    cmake-language-server
-    taplo-lsp
-    rnix-lsp
-  ];
+}: let
+  helix = inputs.helix.packages.${pkgs.system}.default.overrideAttrs (self: {
+    makeWrapperArgs = with pkgs;
+      self.makeWrapperArgs
+      or []
+      ++ [
+        "--suffix"
+        "PATH"
+        ":"
+        (lib.makeBinPath [
+          nodePackages.bash-language-server
+          shellcheck
+          yaml-language-server
+          cmake-language-server
+          taplo-lsp
+          rnix-lsp
+          python3Packages.python-lsp-server
+          clang-tools
+          rust-analyzer
+          inputs.nickel.defaultPackage.${system}
+          gopls
+          go
+        ])
+        "--set-default"
+        "RUST_SRC_PATH"
+        "${rustPlatform.rustcSrc}/library"
+      ];
+  });
+in {
+  environment.systemPackages = [helix];
   home-manager.sharedModules = [
     {
       programs.helix.enable = true;
-      programs.helix.package = inputs.helix.defaultPackage.${pkgs.system};
+      programs.helix.package = helix;
       programs.helix.settings = {
         theme = "snazzy";
         keys.normal = {
