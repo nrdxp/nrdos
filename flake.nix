@@ -67,6 +67,7 @@
       inherit (self.lib) brew;
     in {
       vivarium = brew ["graphical/wayland/vivarium"];
+      terminal = brew ["term/helix" "term/tmux" "term/zsh"];
       nix = brew ["nix.nix"];
       hmInit = {
         home-manager.useGlobalPkgs = true;
