@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  imports = [./zsh ./tmux ./kakoune];
+  imports = [./zsh ./tmux];
 
   home-manager.sharedModules = [
     ./hm-git
